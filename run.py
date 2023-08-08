@@ -1,3 +1,5 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+import random
+
+# Function to initialize the game boards
+def initialize_board(grid_size):
+    return [['.' for _ in range(grid_size)] for _ in range(grid_size)]
