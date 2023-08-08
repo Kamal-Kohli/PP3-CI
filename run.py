@@ -5,16 +5,16 @@ def initialize_board(grid_size):
     return [['.' for _ in range(grid_size)] for _ in range(grid_size)]
 
 # Function to print the game boards
-def print_boards(player_board, cpu_board, grid_size, hide_cpu_ships=True):
+def print_boards(player_board, computer_board, grid_size, hide_computer_ships=True):
     col_labels = " ".join(chr(65 + i) for i in range(grid_size))
-    print(f"{username} Board:          CPU Board:")
+    print(f"{username} Board:        CPU Board:")
     print("   " + col_labels + "      " + "   " + col_labels)
     for i in range(grid_size):
-        if hide_cpu_ships:
-            cpu_row = ["." if cell == 'S' else cell for cell in cpu_board[i]]
+        if hide_computer_ships:
+            computer_row = ["." if cell == 'S' else cell for cell in computer_board[i]]
         else:
-            cpu_row = cpu_board[i]
-        row_str = str(i) + "  " + " ".join(player_board[i]) + "   " + str(i) + "  " + " ".join(cpu_row)
+            computer_row = computer_board[i]
+        row_str = str(i) + "  " + " ".join(player_board[i]) + "   " + str(i) + "  " + " ".join(computer_row)
         print(row_str)
 
 # Function to place ships on the board
@@ -36,6 +36,10 @@ def place_ship(board, ship_size):
                     board[x+i][y] = 'S'
                 break
 
+# Function to check if the game is over
+def is_game_over(board):
+    return all(all(cell != 'S' for cell in row) for row in board)
+
 # Function to convert player input to board coordinates
 def convert_input(input_str, grid_size):
     try:
@@ -51,23 +55,23 @@ def convert_input(input_str, grid_size):
         return None, None
 
 # Function for the player's turn
-def player_turn(cpu_board, grid_size):
+def player_turn(computer_board, grid_size):
     while True:
         player_input = input("Enter target (e.g., A0, B1): ")
         x, y = convert_input(player_input, grid_size)
-        if x is not None and y is not None and cpu_board[x][y] != 'X' and cpu_board[x][y] != '#':
-            if cpu_board[x][y] == 'S':
+        if x is not None and y is not None and computer_board[x][y] != 'X' and computer_board[x][y] != '#':
+            if computer_board[x][y] == 'S':
                 print("Hit!")
-                cpu_board[x][y] = 'X'
+                computer_board[x][y] = 'X'
             else:
                 print("Miss!")
-                cpu_board[x][y] = '#'
+                computer_board[x][y] = '#'
             break
         else:
             print("Invalid target, try again.")
 
 # Function for the computer's turn
-def cpu_turn(player_board, grid_size):
+def computer_turn(player_board, grid_size):
     while True:
         x = random.randint(0, grid_size - 1)
         y = random.randint(0, grid_size - 1)
@@ -87,27 +91,27 @@ def get_feedback():
 # Function to play the Battleship game
 def play_battleship(grid_size, username):
     player_board = initialize_board(grid_size)
-    cpu_board = initialize_board(grid_size)
+    computer_board = initialize_board(grid_size)
 
     ships = [5, 4, 3, 3, 2]
     for ship_size in ships:
         place_ship(player_board, ship_size)
-        place_ship(cpu_board, ship_size)
+        place_ship(computer_board, ship_size)
 
-    print(f"Welcome {username} to Battleship!")
-    print_boards(player_board, cpu_board, grid_size, hide_cpu_ships=True)
+    print(f"Welcome, {username}, to Battleship!")
+    print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
 
     while True:
-        player_turn(cpu_board, grid_size)
-        print_boards(player_board, cpu_board, grid_size, hide_cpu_ships=True)
-        if is_game_over(cpu_board):
+        player_turn(computer_board, grid_size)
+        print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
+        if is_game_over(computer_board):
             print("Congratulations! You sank all the computer's ships. You win!")
             feedback = get_feedback()
             print("Thank you for playing!")
             break
 
-        cpu_turn(player_board, grid_size)
-        print_boards(player_board, cpu_board, grid_size, hide_cpu_ships=True)
+        computer_turn(player_board, grid_size)
+        print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
         if is_game_over(player_board):
             print("Game over! The computer sank all your ships. You lose!")
             feedback = get_feedback()
@@ -120,5 +124,9 @@ if __name__ == "__main__":
         if 5 <= grid_size <= 10:
             username = input("Enter your username: ")
             play_battleship(grid_size, username)
+            play_again = input("Do you want to play another round? (yes/no): ").lower()
+            if play_again == 'no':
+                print("Thank you for playing!")
+                break
         else:
-            print("Invalid grid size. Please enter a value between  5 and 10.")
+            print("Invalid grid size. Please enter a value between 5 and 10.")
