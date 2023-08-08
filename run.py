@@ -7,8 +7,8 @@ def initialize_board(grid_size):
 # Function to print the game boards
 def print_boards(player_board, computer_board, grid_size, hide_computer_ships=True):
     col_labels = " ".join(chr(65 + i) for i in range(grid_size))
-    print(f"{username} Board:        CPU Board:")
-    print("   " + col_labels + "      " + "   " + col_labels)
+    print(f"{username} Board:      CPU Board:")
+    print("   " + col_labels + "   " + "   " + col_labels)
     for i in range(grid_size):
         if hide_computer_ships:
             computer_row = ["." if cell == 'S' else cell for cell in computer_board[i]]
@@ -93,7 +93,7 @@ def play_battleship(grid_size, username):
     player_board = initialize_board(grid_size)
     computer_board = initialize_board(grid_size)
 
-    ships = [5, 4, 3, 3, 2]
+    ships = [5, 4, 3, 2, 2]
     for ship_size in ships:
         place_ship(player_board, ship_size)
         place_ship(computer_board, ship_size)
