@@ -77,8 +77,8 @@ def convert_input(input_str, grid_size):
         letter = input_str[0].upper()
         number = int(input_str[1:])
         if 'A' <= letter <= chr(65 + grid_size - 1) and 0 <= number < grid_size:
-            x = ord(letter) - ord('A')
-            y = number
+            x = number
+            y = ord(letter) - ord('A')
             return x, y
         else:
             return None, None
@@ -127,17 +127,14 @@ def get_feedback():
 def play_battleship(grid_size, username):
     player_board = initialize_board(grid_size)
     computer_board = initialize_board(grid_size)
-    
     # Variatrion of ships
     ships = [5, 4, 3, 2, 2]
     for ship_size in ships:
         place_ship(player_board, ship_size)
         place_ship(computer_board, ship_size)
-    
     # Welcome Massage 
     print(f"Welcome, {username}, to Battleship!")
     print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
-   
     # Hide computer ship from Player
     while True:
         player_turn(computer_board, grid_size)
