@@ -26,9 +26,11 @@ NUM_SHIPS = 5
 
 import random
 
+
 # Function to initialize the game boards
 def initialize_board(grid_size):
     return [['.' for _ in range(grid_size)] for _ in range(grid_size)]
+
 
 # Function to print the game boards
 def print_boards(player_board, computer_board, grid_size, hide_computer_ships=True):
@@ -42,6 +44,7 @@ def print_boards(player_board, computer_board, grid_size, hide_computer_ships=Tr
             computer_row = computer_board[i]
         row_str = str(i) + "  " + " ".join(player_board[i]) + "   " + str(i) + "  " + " ".join(computer_row)
         print(row_str)
+
 
 # Function to place ships on the board
 def place_ship(board, ship_size):
@@ -62,9 +65,11 @@ def place_ship(board, ship_size):
                     board[x+i][y] = 'S'
                 break
 
+
 # Function to check if the game is over
 def is_game_over(board):
     return all(all(cell != 'S' for cell in row) for row in board)
+
 
 # Function to convert player input to board coordinates
 def convert_input(input_str, grid_size):
@@ -79,6 +84,7 @@ def convert_input(input_str, grid_size):
             return None, None
     except (ValueError, IndexError):
         return None, None
+
 
 # Function for the player's turn
 def player_turn(computer_board, grid_size):
@@ -96,6 +102,7 @@ def player_turn(computer_board, grid_size):
         else:
             print("Invalid target, try again.")
 
+
 # Function for the computer's turn
 def computer_turn(player_board, grid_size):
     while True:
@@ -110,28 +117,33 @@ def computer_turn(player_board, grid_size):
                 player_board[x][y] = '#'
             break
 
+
 # Function to get user feedback
 def get_feedback():
     return input("Please provide your feedback on the game: ")
+
 
 # Function to play the Battleship game
 def play_battleship(grid_size, username):
     player_board = initialize_board(grid_size)
     computer_board = initialize_board(grid_size)
-
+    
+    # Variatrion of ships
     ships = [5, 4, 3, 2, 2]
     for ship_size in ships:
         place_ship(player_board, ship_size)
         place_ship(computer_board, ship_size)
-
+    
+    # Welcome Massage 
     print(f"Welcome, {username}, to Battleship!")
     print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
-
+   
+    # Hide computer ship from Player
     while True:
         player_turn(computer_board, grid_size)
         print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
         if is_game_over(computer_board):
-            print("Congratulations! You sank all the computer's ships. You win!")
+            print("Congrats! You sank all the computer's ships. You win!")
             feedback = get_feedback()
             print("Thank you for playing!")
             break
@@ -144,13 +156,14 @@ def play_battleship(grid_size, username):
             print("Thank you for playing!")
             break
 
+
 if __name__ == "__main__":
     while True:
         grid_size = int(input("Enter grid size (5-10): "))
         if 5 <= grid_size <= 10:
             username = input("Enter your username: ")
             play_battleship(grid_size, username)
-            play_again = input("Do you want to play another round? (yes/no): ").lower()
+            play_again = input("Want to play another round? (yes/no):").lower()
             if play_again == 'no':
                 print("Thank you for playing!")
                 break
