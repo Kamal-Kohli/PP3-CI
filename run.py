@@ -14,6 +14,20 @@ D. If all ships are unearthed before using up all bullets,
 E. You can choose a row and column such as A1, B1 to indicate where to shoot.
 """
 
+
+import random
+
+GAME_INSTRUCTIONS = """
+INSTRUCTIONS!!!
+
+1. Enter your grid size.
+2. Enter your Your Name.
+3. Enter your coordinates on the map to sink the enemy's fleet.
+e.g. A1, B1
+
+Now you're ready for the Navel war Captain . GOOD LUCK!
+"""
+
 # Constants and globals
 EMPTY = ''' . '''
 SHIP = ''' S '''
@@ -22,9 +36,6 @@ MISS = ''' # '''
 GRID_SIZE = ''' Between 5 to 10 '''  
 SHIPS = [5, 4, 3, 2, 2]  # Variation sizes of ships
 NUM_SHIPS = 5
-
-
-import random
 
 
 # Function to initialize the game boards
@@ -133,14 +144,16 @@ def play_battleship(grid_size, username):
         place_ship(player_board, ship_size)
         place_ship(computer_board, ship_size)
     # Welcome Massage 
-    print(f"Welcome, {username}, to Battleship!")
+    print(f"Welcome captain {username} to Battleship war!")
     print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
+    # Game instructons
+    print(GAME_INSTRUCTIONS)
     # Hide computer ship from Player
     while True:
         player_turn(computer_board, grid_size)
         print_boards(player_board, computer_board, grid_size, hide_computer_ships=True)
         if is_game_over(computer_board):
-            print("Congrats! You sank all the computer's ships. You win!")
+            print("Congrats, You win! All enemy down.")
             feedback = get_feedback()
             print("Thank you for playing!")
             break
