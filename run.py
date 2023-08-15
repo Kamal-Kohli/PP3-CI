@@ -56,8 +56,8 @@ def print_boards(player, computer, size, hide_comp=True):
 # Function to place ships on the board
 def place_ship(board, ship_size):
     while True:
-        orientation = random.choice(['horizontal', 'vertical'])
-        if orientation == 'horizontal':
+        o = random.choice(['h', 'v'])
+        if o == 'h':
             x = random.randint(0, len(board) - 1)
             y = random.randint(0, len(board[0]) - ship_size)
             if all(board[x][y+i] == '.' for i in range(ship_size)):
@@ -79,12 +79,12 @@ def is_game_over(board):
 
 
 # Function to convert player input to board coordinates
-def convert_input(input_str, grid_size):
+def conv_input(input_str, size):
     try:
         letter = input_str[0].upper()
-        number = int(input_str[1:])
-        if 'A' <= letter <= chr(65 + grid_size - 1) and 0 <= number < grid_size:
-            x = number
+        num = int(input_str[1:])
+        if 'A' <= letter <= chr(65 + size - 1) and 0 <= num < size:
+            x = num
             y = ord(letter) - ord('A')
             return x, y
         else:
