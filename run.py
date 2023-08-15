@@ -79,12 +79,12 @@ def is_game_over(board):
 
 
 # Function to convert player input to board coordinates
-def conv_input(input_str, size):
+def convert_input(input_str, grid_size):
     try:
         letter = input_str[0].upper()
-        num = int(input_str[1:])
-        if 'A' <= letter <= chr(65 + size - 1) and 0 <= num < size:
-            x = num
+        number = int(input_str[1:])
+        if 'A' <= letter <= chr(65 + grid_size - 1) and 0 <= number < grid_size:
+            x = number
             y = ord(letter) - ord('A')
             return x, y
         else:
@@ -94,17 +94,17 @@ def conv_input(input_str, size):
 
 
 # Function for the player's turn
-def player_turn(computer_board, grid_size):
+def player_turn(comp_board, size):
     while True:
-        player_input = input("Enter target (e.g., A0, B1): ")
-        x, y = convert_input(player_input, grid_size)
-        if x is not None and y is not None and computer_board[x][y] != 'X' and computer_board[x][y] != '#':
-            if computer_board[x][y] == 'S':
+        p_input = input("Enter target (e.g., A0, B1): ")
+        x, y = conv_input(p_input, size)
+        if x is not None and y is not None and comp_board[x][y] != 'X' and comp_board[x][y] != '#':
+            if comp_board[x][y] == 'S':
                 print("Hit!")
-                computer_board[x][y] = 'X'
+                comp_board[x][y] = 'X'
             else:
                 print("Miss!")
-                computer_board[x][y] = '#'
+                comp_board[x][y] = '#'
             break
         else:
             print("Invalid target, try again.")
