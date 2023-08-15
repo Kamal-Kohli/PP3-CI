@@ -101,7 +101,11 @@ def player_turn(comp_board, size):
     while True:
         p_input = input("Enter target (e.g., A0, B1): ")
         x, y = conv_input(p_input, size)
-        if x is not None and y is not None and comp_board[x][y] != 'X' and comp_board[x][y] != '#':
+        if (
+            x is not None
+            and y is not None
+            and comp_board[x][y] not in ('X', '#')
+        ):
             if comp_board[x][y] == 'S':
                 print("Hit!")
                 comp_board[x][y] = 'X'
