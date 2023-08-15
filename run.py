@@ -45,6 +45,14 @@ def init_board(size):
 
 # Function to print the game boards
 def print_boards(player, computer, size, hide_comp=True):
+    """
+    Prints the player and computer game boards side by side.
+
+    :player: The player's game board.
+    :computer: The computer's game board.
+    :size: The size of the game board.
+    :hide_comp: If True, hides the computer's ship positions.
+    """
     col_labels = " ".join(chr(65 + i) for i in range(size))
     print(f"{username} Board:      CPU Board:")
     print("   " + col_labels + "   " + "   " + col_labels)
@@ -58,6 +66,12 @@ def print_boards(player, computer, size, hide_comp=True):
 
 # Function to place ships on the board
 def place_ship(board, ship_size):
+    """
+    Randomly places a ship of the given size on the game board.
+
+    :board: The game board to place the ship on.
+    :ship_size: The size of the ship.
+    """
     while True:
         o = random.choice(['h', 'v'])
         if o == 'h':
