@@ -111,10 +111,10 @@ def player_turn(comp_board, size):
 
 
 # Function for the computer's turn
-def computer_turn(player_board, grid_size):
+def comp_turn(player_board, size):
     while True:
-        x = random.randint(0, grid_size - 1)
-        y = random.randint(0, grid_size - 1)
+        x = random.randint(0, size - 1)
+        y = random.randint(0, size - 1)
         if player_board[x][y] != 'X' and player_board[x][y] != '#':
             if player_board[x][y] == 'S':
                 print("CPU hit at", chr(65 + x) + str(y))
