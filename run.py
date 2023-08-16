@@ -34,7 +34,7 @@ SHIP = ''' S '''
 HIT = ''' X  '''
 MISS = ''' # '''
 GRID_SIZE = ''' Between 5 to 10 '''
-SHIPS = [5, 4, 3, 2, 2]  # Variation sizes of ships
+SHIPS = [5, 3, 3, 2, 2]  # Variation sizes of ships
 NUM_SHIPS = 5"""
 
 
@@ -155,27 +155,41 @@ def get_feedback():
 def play_battleship(size, uname):
     p_board = init_board(size)
     c_board = init_board(size)
-    ships = [5, 4, 3, 2, 2]
+    ships = [5, 3, 3, 2, 2]
     for s in ships:
         place_ship(p_board, s)
         place_ship(c_board, s)
+    # Calculate total shots based on grid size
+    total_shots = 22 + (size - 5) * 6
+    remaining_shots = total_shots
     print(f"Welcome {uname} to Battleship war!")
-    print_boards(p_board, c_board, size, hide_comp=True)
     print(GAME_INSTRUCTIONS)
-    while True:
+    print_boards(p_board, c_board, size, hide_comp=True)
+    while remaining_shots > 0:
+        print(f"Remaining Shots: {remaining_shots}")
+
         player_turn(c_board, size)
+        remaining_shots -= 1
+
         print_boards(p_board, c_board, size, hide_comp=True)
         if is_game_over(c_board):
-            print("Congrats, You win! All enemy down.")
+            print("Congrats, You win! All enemy ships are down.")
             feedback = get_feedback()
             print("Thank you for playing!")
             break
+
         comp_turn(p_board, size)
         print_boards(p_board, c_board, size, hide_comp=True)
         if is_game_over(p_board):
             print("Game over! The computer sank all your ships. You lose!")
             feedback = get_feedback()
             print("Thank you for playing!")
+            break
+
+    if remaining_shots == 0:
+        print("Out of shots! The battle is a draw.")
+        feedback = get_feedback()
+        print("Thank you for playing!")
 
 
 if __name__ == "__main__":
