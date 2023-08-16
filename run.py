@@ -14,19 +14,7 @@ You Win else, You lose.
 E. You can choose a row and column such as A1, B1 to indicate where to shoot.
 """
 
-
 import random
-
-GAME_INSTRUCTIONS = """
-INSTRUCTIONS!!!
-
-1. Enter your grid size.
-2. Enter Your Name.
-3. Enter your coordinates on the map to sink the enemy's fleet.
-e.g. A1, B1
-
-Now you're ready for the Navel war Captain. GOOD LUCK!
-"""
 
 # Constants and globals
 """EMPTY = ''' . '''
@@ -36,6 +24,15 @@ MISS = ''' # '''
 GRID_SIZE = ''' Between 5 to 10 '''
 SHIPS = [5, 3, 3, 2, 2]  # Variation sizes of ships
 NUM_SHIPS = 5"""
+
+GAME_INSTRUCTIONS = """
+INSTRUCTIONS!!!
+1. Enter your grid size.
+2. Enter Your Name.
+3. Enter your coordinates on the map to sink the enemy's fleet e.g. A0, B1.
+4. Player will have limited shots as per grid size.
+Now you're ready for the Naval war Captain. GOOD LUCK!
+"""
 
 
 # Function to initialize the game boards
@@ -48,10 +45,10 @@ def print_boards(player, computer, size, hide_comp=True):
     """
     Prints the player and computer game boards side by side.
 
-    :player: The player's game board.
-    :computer: The computer's game board.
-    :size: The size of the game board.
-    :hide_comp: If True, hides the computer's ship positions.
+    :param player: The player's game board.
+    :param computer: The computer's game board.
+    :param size: The size of the game board.
+    :param hide_comp: If True, hides the computer's ship positions.
     """
     col_labels = " ".join(chr(65 + i) for i in range(size))
     print(f"{username} Board:      CPU Board:")
@@ -69,8 +66,8 @@ def place_ship(board, ship_size):
     """
     Randomly places a ship of the given size on the game board.
 
-    :board: The game board to place the ship on.
-    :ship_size: The size of the ship.
+    :param board: The game board to place the ship on.
+    :param ship_size: The size of the ship.
     """
     while True:
         o = random.choice(['h', 'v'])
@@ -161,13 +158,14 @@ def play_battleship(size, uname):
         place_ship(c_board, s)
     # Calculate total shots based on grid size
     total_shots = 22 + (size - 5) * 6
+    # Maximum shots based on grid size
     remaining_shots = total_shots
     print(f"Welcome {uname} to Battleship war!")
     print(GAME_INSTRUCTIONS)
     print_boards(p_board, c_board, size, hide_comp=True)
+    # Decrease remaining shots after each player turn
     while remaining_shots > 0:
         print(f"Remaining Shots: {remaining_shots}")
-
         player_turn(c_board, size)
         remaining_shots -= 1
 
@@ -181,7 +179,7 @@ def play_battleship(size, uname):
         comp_turn(p_board, size)
         print_boards(p_board, c_board, size, hide_comp=True)
         if is_game_over(p_board):
-            print("Game over! The computer sank all your ships. You lose!")
+            print("Game over! The CPU sank all your ships. You lose!")
             feedback = get_feedback()
             print("Thank you for playing!")
             break
