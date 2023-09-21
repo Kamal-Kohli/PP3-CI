@@ -23,7 +23,6 @@ INSTRUCTIONS!!!
 2. Enter Your Name.
 3. Enter your coordinates on the map to sink the enemy's fleet e.g. A0, B1.
 4. Player will have limited shots as per grid size.
-Now you're ready for the Naval war Captain. GOOD LUCK!
 """
 
 
@@ -153,7 +152,9 @@ def play_battleship(size, uname):
     # Maximum shots based on grid size
     remaining_shots = total_shots
     print(f"Welcome Captain {uname} to Naval War!")
-    print(GAME_INSTRUCTIONS)
+    print(f"Now you're ready for the Naval war Captain {uname}. GOOD LUCK!")
+
+
     print_boards(p_board, c_board, size, hide_comp=True)
     # Decrease remaining shots after each player turn
     while remaining_shots > 0:
@@ -184,6 +185,8 @@ def play_battleship(size, uname):
 
 if __name__ == "__main__":
     while True:
+        print("**ULTIMATE NAVAL WAR**")
+        print(GAME_INSTRUCTIONS)
         size = int(input("Enter grid size (5-10): "))
         if 5 <= size <= 10:
             username = input("Enter your Name Captain: ")
