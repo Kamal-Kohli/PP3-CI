@@ -35,4 +35,20 @@ The winner is the player who sinks all of their opponent's naval ships first.
 ## Features
 
 ### Existing Features
+- Random board generation.
+  - Ships are randomly placed on both the player and computer boards.
+  - The player cannot see where the computer's ships are.
 
+- Play against the computer(AI).
+- Accepts user input.
+- Maintains scores.
+
+- Input validation and error checking.
+  - You cannot enter invalid coordinates.
+  - You must enter Alphabet and Number.
+  - You cannot enter the same gusses twice.
+
+### Future Features
+- Add graphics to the game.
+- Allow player to position ships themselves.
+- Allow player to customize ships size
