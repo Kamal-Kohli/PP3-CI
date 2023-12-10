@@ -4,9 +4,14 @@
 + [Overview](#overview "Overview")
 + [How to play](#how-to-play "How to play")
 + [Features](#features "Features")
+  + [Existing Features](#existing-features "Existing Features")
+  + [Future Features](#fture-features "Future Features")
 + [Data Model](#data-model "Data Model")
 + [Testing](#testing "Testing")
 + [Bugs](#bugs "Bugs")
+  + [Solved Bugs](#solved-bugs "Solved Bugs")
+  + [Remaining Bugs](#remaining-bugs "Remaining Bugs")
+  + [Validator Testing](#validator-testing "Validator Testing")
 + [Deployment](#deployment "Deployment")
 + [Credits](#credits "Credits")
 + [Acknowledgments](#acknowledgments "Acknowledgments")
@@ -26,3 +31,8 @@ Gusses are marked on the board with "#". Hits are indiated by "X".
 The player and the opponent then take it in turns to make gusses and try to sink each other's naval ships.
 
 The winner is the player who sinks all of their opponent's naval ships first.
+
+## Features
+
+### Existing Features
+
