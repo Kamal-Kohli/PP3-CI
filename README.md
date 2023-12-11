@@ -19,6 +19,10 @@
 # Overview
 Welcome to the Battleship Game! This repository houses a classic naval strategy game implemented in [Python programming language](https://github.com/Kamal-Kohli/naval-war-pp3/blob/main/run.py), which runs in the Code Institute mock terminal on Heroku app. Battle it out on the high seas, strategize your moves, and sink your opponent's ships. Test your strategic skills against a smart AI opponent in this engaging and interactive Battleship experience.
 
+![](/assets/images/111.png)
+[Click for play](https://naval-war-31e4287bc929.herokuapp.com/) - 
+[Backend file](https://github.com/Kamal-Kohli/naval-war-pp3)
+
 # How to play
 Naval war game is based on the classic pen and papper game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
 
