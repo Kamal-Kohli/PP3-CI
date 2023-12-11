@@ -61,3 +61,7 @@ I have manually tested this game by doing the following:
 - Passed the code through a PEP8 linter and confirmed there are no problems
 - Given invalid inputs: strings when alphabet and number are expected, out of bonds inputs, same input twice.
 - Tested in my local terminal and the Code Institute Heroku terminal
+
+## Bugs
+### Solved Bugs
+- 
