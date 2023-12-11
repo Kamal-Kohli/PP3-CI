@@ -70,6 +70,10 @@ The winner is the player who sinks all of their opponent's naval ships first.
 - Allow player to customize ships size
 
 # Data Model
+I decided to use a board class as my model. The game creates two instances of the board class to hold the player's and the opponent's board.
+
+The board class stores the, the number of ships, the positions of the ships, the guesses against the board, but player can generate custom board size. 
+
 # Testing
 I have manually tested this game by doing the following:
 - Passed the code through a PEP8 linter and confirmed there are no problems
@@ -80,3 +84,26 @@ I have manually tested this game by doing the following:
 ### Solved Bugs
 - When deploying the project to Heroku, I faced issues in the build log. ![](/assets/images/build.png)
 -  So, after I succeeded in the deployment, I deleted all packages and kept empty requirement.txt.
+
+## Remaining Bugs
+- No bugs remaining
+
+## Validator Testing 
+- PEP8 
+![](/assets/images/12.png)
+  - No errors were returned from CI Python Linter
+
+# Deployment
+
+This project was deployed using Code Institute's terminal Heroku app.
+- Steps for deployment
+  - Fork or clone this repository
+  - Create a new Heroku app
+  - Set the buildpacks to Python and NodeJS in that order
+  - Link the Heroku app to the repository
+  -  Click on Deploy 
+
+# Credits 
+- Code Institute for the deployment terminal
+- Heroku app for ECO DYNOS credits
+- Open sourse: Youtube and Slack
