@@ -37,16 +37,21 @@ The winner is the player who sinks all of their opponent's naval ships first.
 # Features
 
 ### Existing Features
+![](/assets/images/110.png)
 - Random board generation.
   - Ships are randomly placed on both the player and computer boards.
   - The player cannot see where the computer's ships are.
 
+![](/assets/images/112.png)
+
 - Play against the computer(AI).
+![](/assets/images/13.png)
 - Accepts user input.
 - Maintains scores.
 
+![](/assets/images/11.png)
 - Input validation and error checking.
-  - You cannot enter invalid coordinates.
+  - You cannot enter invalid coordinates. (E.g. A5,A6)
   - You must enter Alphabet and Number.
   - You cannot enter the same gusses twice.
 
@@ -64,4 +69,5 @@ I have manually tested this game by doing the following:
 
 ## Bugs
 ### Solved Bugs
-- 
+- When deploying the project to Heroku, I faced issues in the build log. ![](/assets/images/build.png)
+-  So, after I succeeded in the deployment, I deleted all packages and kept empty requirement.txt.
