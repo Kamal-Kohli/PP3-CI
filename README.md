@@ -59,6 +59,11 @@ The winner is the player who sinks all of their opponent's naval ships first.
   - You must enter Alphabet and Number.
   - You cannot enter the same gusses twice.
 
+![](/assets/images/15.png)
+- After finishing the game.
+
+![](/assets/images/16.png)
+  - Feedback and Play again.
 ### Future Features
 - Add graphics to the game.
 - Allow player to position ships themselves.
